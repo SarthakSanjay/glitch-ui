@@ -1,5 +1,5 @@
 {
-  "name": "with-tailwind",
+  "name": "glitch-ui",
   "private": true,
   "scripts": {
     "build": "turbo run build",
