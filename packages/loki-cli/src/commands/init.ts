@@ -1,5 +1,5 @@
 import { program } from "commander";
-import { checkFramework, checkTailwind } from "../utils/util.js";
+import { checkFramework, checkTailwind, createLibFile } from "../utils/util.js";
 import chalk from "chalk";
 import { execa } from "execa";
 
@@ -12,6 +12,7 @@ export async function initCommand() {
         checkFramework();
         checkTailwind();
         installDependencies();
+        createLibFile();
 
         console.log(chalk.greenBright("Project Initialization completed"));
       } catch (error) {
