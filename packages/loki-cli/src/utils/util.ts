@@ -1,5 +1,10 @@
 import chalk from "chalk";
 import fs from "fs-extra";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const LIB_DIR = path.join(__dirname, "..", "src", "lib");
 
 export async function checkFramework() {
   const isNext =
@@ -36,4 +41,20 @@ export async function checkTailwind() {
     console.log(chalk.redBright("Tailwindcss not found"));
     return;
   }
+}
+
+export async function createLibFile() {
+  try {
+    const srcPath = path.join(LIB_DIR, "utils.ts");
+    const destDir = path.join(process.cwd(), "src", "lib");
+    const destPath = path.join(destDir, "utils.ts");
+
+    if (!(await fs.pathExists(srcPath))) {
+      throw new Error(`utils.ts file not found in lib`);
+    }
+
+    await fs.ensureDir(destDir);
+    await fs.copyFile(srcPath, destPath);
+    console.log(chalk.greenBright("✅ added lib/utils.ts"));
+  } catch (error) {}
 }
