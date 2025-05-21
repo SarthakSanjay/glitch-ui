@@ -6,8 +6,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const COMPONENT_DIR = path.join(__dirname, "..", "src", "components");
-console.log("dirname", __dirname);
-console.log("COMPONENT_DIR", COMPONENT_DIR);
+
 export async function addCommand() {
   program
     .command("add <componentName>")
