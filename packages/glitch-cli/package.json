@@ -1,0 +1,37 @@
+{
+  "name": "@repo/glitch-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "glitch": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --out-dir dist --format esm --dts --clean && cp -r src/components dist/",
+    "start": "node dist/index.js",
+    "dev": "tsup --watch"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.15.18",
+    "@types/prompts": "^2.4.9",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "execa": "^9.5.3",
+    "fs-extra": "^11.3.0",
+    "prompts": "^2.4.2",
+    "tsup": "^8.5.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "files": [
+    "dist",
+    "src/components"
+  ]
+}
